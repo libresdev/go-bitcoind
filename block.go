@@ -50,3 +50,9 @@ type BlockV2 struct {
 	Block
 	Tx []RawTransaction `json:"tx"`
 }
+
+// Represents a verbose 2 block
+type BlockV3 struct {
+	Block
+	Tx []RawBlockTransaction `json:"tx"`
+}

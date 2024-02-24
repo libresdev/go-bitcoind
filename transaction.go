@@ -15,6 +15,16 @@ type Vin struct {
 	Sequence  uint32    `json:"sequence"`
 }
 
+// BlockTxVin represent an IN value in `getblock` command with verbosity=3
+type BlockTxVin struct {
+	Coinbase  string    `json:"coinbase"`
+	Txid      string    `json:"txid"`
+	Vout      int       `json:"vout"`
+	ScriptSig ScriptSig `json:"scriptSig"`
+	Sequence  uint32    `json:"sequence"`
+	Prevout   Vout      `json:"prevout"`
+}
+
 type ScriptPubKey struct {
 	Asm       string   `json:"asm"`
 	Hex       string   `json:"hex"`
@@ -43,6 +53,12 @@ type RawTransaction struct {
 	Confirmations uint64 `json:"confirmations,omitempty"`
 	Time          int64  `json:"time,omitempty"`
 	Blocktime     int64  `json:"blocktime,omitempty"`
+}
+
+// RawBlockTransaction represents a raw transaction in `getblock` with verbosity=3
+type RawBlockTransaction struct {
+	RawTransaction
+	Vin []BlockTxVin `json:"vin"`
 }
 
 // TransactionDetails represents details about a transaction

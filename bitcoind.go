@@ -162,6 +162,16 @@ func (b *Bitcoind) GetBlockV2(blockHash string) (block BlockV2, err error) {
 	return
 }
 
+// GetBlockV2 returns verbose "2" information about the block with the given hash.
+func (b *Bitcoind) GetBlockV3(blockHash string) (block BlockV3, err error) {
+	r, err := b.client.call("getblock", []interface{}{blockHash, 3})
+	if err = handleError(err, &r); err != nil {
+		return
+	}
+	err = json.Unmarshal(r.Result, &block)
+	return
+}
+
 // GetRawBlock returns information about the block with the given hash.
 func (b *Bitcoind) GetRawBlock(blockHash string) (str string, err error) {
 	r, err := b.client.call("getblock", []interface{}{blockHash, false})
