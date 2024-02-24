@@ -1,4 +1,4 @@
-module github.com/toorop/go-bitcoind
+module github.com/libresdev/go-bitcoind
 
 go 1.21
 
