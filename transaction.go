@@ -17,12 +17,8 @@ type Vin struct {
 
 // BlockTxVin represent an IN value in `getblock` command with verbosity=3
 type BlockTxVin struct {
-	Coinbase  string    `json:"coinbase"`
-	Txid      string    `json:"txid"`
-	Vout      int       `json:"vout"`
-	ScriptSig ScriptSig `json:"scriptSig"`
-	Sequence  uint32    `json:"sequence"`
-	Prevout   Vout      `json:"prevout"`
+	Vin
+	Prevout Vout `json:"prevout"`
 }
 
 type ScriptPubKey struct {
